@@ -30,16 +30,20 @@
         {
             groupBox1 = new GroupBox();
             myHsmartWindowControl1 = new HalconCombineCsharp.myControls.myHsmartWindowControl();
-            groupBox2 = new GroupBox();
-            ProG = new PropertyGrid();
             groupBox3 = new GroupBox();
             HelpFunction = new GroupBox();
+            detectCon = new Button();
+            clearDraw = new Button();
+            SaveParameter = new Button();
+            executMsm = new Button();
+            drawCalliper = new Button();
+            executMatch = new Button();
             BlobAnalyse = new GroupBox();
             loadTemplate = new Button();
             TrainTemplate = new Button();
             SelectArithmetic = new Button();
             executeBlob = new Button();
-            button1 = new Button();
+            BtnBlobParam = new Button();
             groupBox4 = new GroupBox();
             ImageBasic = new GroupBox();
             btnGray = new Button();
@@ -50,23 +54,25 @@
             BtnOpening = new Button();
             BtnConnection = new Button();
             BtnSelect = new Button();
-            executMatch = new Button();
-            drawCalliper = new Button();
-            executMsm = new Button();
-            SaveParameter = new Button();
-            clearDraw = new Button();
-            detectCon = new Button();
             tabControl1 = new TabControl();
             detectResult = new TabPage();
+            dataGridView1 = new DataGridView();
             propPram = new TabPage();
+            groupBox2 = new GroupBox();
+            ProG = new PropertyGrid();
             logInformation = new TabPage();
+            txtLog = new TextBox();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             HelpFunction.SuspendLayout();
             BlobAnalyse.SuspendLayout();
             ImageBasic.SuspendLayout();
             tabControl1.SuspendLayout();
+            detectResult.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            propPram.SuspendLayout();
+            groupBox2.SuspendLayout();
+            logInformation.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -97,26 +103,6 @@
             myHsmartWindowControl1.WindowSize = new Size(619, 713);
             myHsmartWindowControl1.Load += myHsmartWindowControl1_Load;
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(ProG);
-            groupBox2.Location = new Point(12, 594);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(569, 166);
-            groupBox2.TabIndex = 2;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "属性设置窗口";
-            // 
-            // ProG
-            // 
-            ProG.BackColor = SystemColors.Control;
-            ProG.Dock = DockStyle.Fill;
-            ProG.Location = new Point(3, 24);
-            ProG.Name = "ProG";
-            ProG.Size = new Size(563, 139);
-            ProG.TabIndex = 0;
-            ProG.SelectedGridItemChanged += ProG_SelectedGridItemChanged;
-            // 
             // groupBox3
             // 
             groupBox3.AutoSize = true;
@@ -145,13 +131,79 @@
             HelpFunction.TabStop = false;
             HelpFunction.Text = "辅助功能";
             // 
+            // detectCon
+            // 
+            detectCon.BackColor = Color.PowderBlue;
+            detectCon.ForeColor = SystemColors.ActiveCaptionText;
+            detectCon.Location = new Point(195, 125);
+            detectCon.Name = "detectCon";
+            detectCon.Size = new Size(132, 40);
+            detectCon.TabIndex = 5;
+            detectCon.Text = "连续检测";
+            detectCon.UseVisualStyleBackColor = false;
+            // 
+            // clearDraw
+            // 
+            clearDraw.BackColor = Color.DarkTurquoise;
+            clearDraw.ForeColor = SystemColors.ControlText;
+            clearDraw.Location = new Point(20, 125);
+            clearDraw.Name = "clearDraw";
+            clearDraw.Size = new Size(132, 40);
+            clearDraw.TabIndex = 4;
+            clearDraw.Text = "清空绘制";
+            clearDraw.UseVisualStyleBackColor = false;
+            // 
+            // SaveParameter
+            // 
+            SaveParameter.BackColor = Color.PaleTurquoise;
+            SaveParameter.ForeColor = SystemColors.ActiveCaptionText;
+            SaveParameter.Location = new Point(195, 79);
+            SaveParameter.Name = "SaveParameter";
+            SaveParameter.Size = new Size(132, 40);
+            SaveParameter.TabIndex = 3;
+            SaveParameter.Text = "参数保存";
+            SaveParameter.UseVisualStyleBackColor = false;
+            // 
+            // executMsm
+            // 
+            executMsm.BackColor = Color.MediumTurquoise;
+            executMsm.ForeColor = SystemColors.ActiveCaptionText;
+            executMsm.Location = new Point(20, 79);
+            executMsm.Name = "executMsm";
+            executMsm.Size = new Size(132, 40);
+            executMsm.TabIndex = 2;
+            executMsm.Text = "执行测量";
+            executMsm.UseVisualStyleBackColor = false;
+            // 
+            // drawCalliper
+            // 
+            drawCalliper.ForeColor = SystemColors.ActiveCaptionText;
+            drawCalliper.Location = new Point(195, 27);
+            drawCalliper.Name = "drawCalliper";
+            drawCalliper.Size = new Size(129, 40);
+            drawCalliper.TabIndex = 1;
+            drawCalliper.Text = "绘制卡尺ROI";
+            drawCalliper.UseVisualStyleBackColor = true;
+            // 
+            // executMatch
+            // 
+            executMatch.BackColor = Color.Turquoise;
+            executMatch.ForeColor = SystemColors.ActiveCaptionText;
+            executMatch.Location = new Point(20, 27);
+            executMatch.Name = "executMatch";
+            executMatch.Size = new Size(132, 40);
+            executMatch.TabIndex = 0;
+            executMatch.Text = "执行匹配";
+            executMatch.UseVisualStyleBackColor = false;
+            executMatch.Click += button2_Click;
+            // 
             // BlobAnalyse
             // 
             BlobAnalyse.Controls.Add(loadTemplate);
             BlobAnalyse.Controls.Add(TrainTemplate);
             BlobAnalyse.Controls.Add(SelectArithmetic);
             BlobAnalyse.Controls.Add(executeBlob);
-            BlobAnalyse.Controls.Add(button1);
+            BlobAnalyse.Controls.Add(BtnBlobParam);
             BlobAnalyse.Controls.Add(groupBox4);
             BlobAnalyse.Location = new Point(26, 252);
             BlobAnalyse.Name = "BlobAnalyse";
@@ -207,18 +259,20 @@
             executeBlob.TabIndex = 12;
             executeBlob.Text = "执行Blob检测";
             executeBlob.UseVisualStyleBackColor = false;
+            executeBlob.Click += executeBlob_Click;
             // 
-            // button1
+            // BtnBlobParam
             // 
-            button1.BackColor = Color.MediumTurquoise;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(20, 36);
-            button1.Name = "button1";
-            button1.Size = new Size(123, 43);
-            button1.TabIndex = 11;
-            button1.Text = "Blob参数";
-            button1.UseVisualStyleBackColor = false;
+            BtnBlobParam.BackColor = Color.MediumTurquoise;
+            BtnBlobParam.FlatStyle = FlatStyle.Flat;
+            BtnBlobParam.ForeColor = SystemColors.ButtonHighlight;
+            BtnBlobParam.Location = new Point(20, 36);
+            BtnBlobParam.Name = "BtnBlobParam";
+            BtnBlobParam.Size = new Size(123, 43);
+            BtnBlobParam.TabIndex = 11;
+            BtnBlobParam.Text = "Blob参数";
+            BtnBlobParam.UseVisualStyleBackColor = false;
+            BtnBlobParam.Click += BtnBlobParam_Click;
             // 
             // groupBox4
             // 
@@ -352,72 +406,6 @@
             BtnSelect.UseVisualStyleBackColor = false;
             BtnSelect.Click += BtnSelect_Click;
             // 
-            // executMatch
-            // 
-            executMatch.BackColor = Color.Turquoise;
-            executMatch.ForeColor = SystemColors.ActiveCaptionText;
-            executMatch.Location = new Point(20, 27);
-            executMatch.Name = "executMatch";
-            executMatch.Size = new Size(132, 40);
-            executMatch.TabIndex = 0;
-            executMatch.Text = "执行匹配";
-            executMatch.UseVisualStyleBackColor = false;
-            executMatch.Click += button2_Click;
-            // 
-            // drawCalliper
-            // 
-            drawCalliper.ForeColor = SystemColors.ActiveCaptionText;
-            drawCalliper.Location = new Point(195, 27);
-            drawCalliper.Name = "drawCalliper";
-            drawCalliper.Size = new Size(129, 40);
-            drawCalliper.TabIndex = 1;
-            drawCalliper.Text = "绘制卡尺ROI";
-            drawCalliper.UseVisualStyleBackColor = true;
-            // 
-            // executMsm
-            // 
-            executMsm.BackColor = Color.MediumTurquoise;
-            executMsm.ForeColor = SystemColors.ActiveCaptionText;
-            executMsm.Location = new Point(20, 79);
-            executMsm.Name = "executMsm";
-            executMsm.Size = new Size(132, 40);
-            executMsm.TabIndex = 2;
-            executMsm.Text = "执行测量";
-            executMsm.UseVisualStyleBackColor = false;
-            // 
-            // SaveParameter
-            // 
-            SaveParameter.BackColor = Color.PaleTurquoise;
-            SaveParameter.ForeColor = SystemColors.ActiveCaptionText;
-            SaveParameter.Location = new Point(195, 79);
-            SaveParameter.Name = "SaveParameter";
-            SaveParameter.Size = new Size(132, 40);
-            SaveParameter.TabIndex = 3;
-            SaveParameter.Text = "参数保存";
-            SaveParameter.UseVisualStyleBackColor = false;
-            // 
-            // clearDraw
-            // 
-            clearDraw.BackColor = Color.DarkTurquoise;
-            clearDraw.ForeColor = SystemColors.ControlText;
-            clearDraw.Location = new Point(20, 125);
-            clearDraw.Name = "clearDraw";
-            clearDraw.Size = new Size(132, 40);
-            clearDraw.TabIndex = 4;
-            clearDraw.Text = "清空绘制";
-            clearDraw.UseVisualStyleBackColor = false;
-            // 
-            // detectCon
-            // 
-            detectCon.BackColor = Color.PowderBlue;
-            detectCon.ForeColor = SystemColors.ActiveCaptionText;
-            detectCon.Location = new Point(195, 125);
-            detectCon.Name = "detectCon";
-            detectCon.Size = new Size(132, 40);
-            detectCon.TabIndex = 5;
-            detectCon.Text = "连续检测";
-            detectCon.UseVisualStyleBackColor = false;
-            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(detectResult);
@@ -431,41 +419,81 @@
             // 
             // detectResult
             // 
+            detectResult.Controls.Add(dataGridView1);
             detectResult.Location = new Point(4, 30);
             detectResult.Name = "detectResult";
             detectResult.Padding = new Padding(3);
-            detectResult.Size = new Size(313, 470);
+            detectResult.Size = new Size(303, 534);
             detectResult.TabIndex = 0;
             detectResult.Text = "检测结果";
             detectResult.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(297, 528);
+            dataGridView1.TabIndex = 0;
+            // 
             // propPram
             // 
-            propPram.Location = new Point(4, 30);
+            propPram.Controls.Add(groupBox2);
+            propPram.Location = new Point(4, 26);
             propPram.Name = "propPram";
             propPram.Padding = new Padding(3);
-            propPram.Size = new Size(303, 534);
+            propPram.Size = new Size(303, 538);
             propPram.TabIndex = 1;
             propPram.Text = "参数配置";
             propPram.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(ProG);
+            groupBox2.Dock = DockStyle.Fill;
+            groupBox2.Location = new Point(3, 3);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(297, 532);
+            groupBox2.TabIndex = 3;
+            groupBox2.TabStop = false;
+            // 
+            // ProG
+            // 
+            ProG.BackColor = SystemColors.Control;
+            ProG.Dock = DockStyle.Fill;
+            ProG.Location = new Point(3, 24);
+            ProG.Name = "ProG";
+            ProG.Size = new Size(291, 505);
+            ProG.TabIndex = 0;
+            // 
             // logInformation
             // 
+            logInformation.Controls.Add(txtLog);
             logInformation.Location = new Point(4, 30);
             logInformation.Name = "logInformation";
-            logInformation.Size = new Size(313, 470);
+            logInformation.Size = new Size(303, 534);
             logInformation.TabIndex = 2;
             logInformation.Text = "日志信息";
             logInformation.UseVisualStyleBackColor = true;
+            // 
+            // txtLog
+            // 
+            txtLog.Dock = DockStyle.Fill;
+            txtLog.Location = new Point(0, 0);
+            txtLog.Multiline = true;
+            txtLog.Name = "txtLog";
+            txtLog.ReadOnly = true;
+            txtLog.Size = new Size(303, 534);
+            txtLog.TabIndex = 0;
             // 
             // PG
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1359, 775);
+            ClientSize = new Size(1304, 775);
             Controls.Add(tabControl1);
             Controls.Add(groupBox3);
-            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Font = new Font("Microsoft YaHei UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
@@ -473,12 +501,17 @@
             Text = "Halcon联合C#变成的基础实战";
             Load += Form1_Load;
             groupBox1.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             HelpFunction.ResumeLayout(false);
             BlobAnalyse.ResumeLayout(false);
             ImageBasic.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
+            detectResult.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            propPram.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            logInformation.ResumeLayout(false);
+            logInformation.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -499,9 +532,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private GroupBox groupBox2;
         private GroupBox groupBox3;
-        private PropertyGrid ProG;
         private Button btnGrabImage;
         private Button btnThreshold;
         private Button BtnSelect;
@@ -515,7 +546,7 @@
         private GroupBox BlobAnalyse;
         private GroupBox groupBox4;
         private GroupBox HelpFunction;
-        private Button button1;
+        private Button BtnBlobParam;
         private Button loadTemplate;
         private Button TrainTemplate;
         private Button SelectArithmetic;
@@ -530,5 +561,9 @@
         private TabPage detectResult;
         private TabPage propPram;
         private TabPage logInformation;
+        private TextBox txtLog;
+        private GroupBox groupBox2;
+        private PropertyGrid ProG;
+        private DataGridView dataGridView1;
     }
 }
